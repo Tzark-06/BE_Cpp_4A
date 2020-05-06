@@ -54,6 +54,24 @@ void DigitalActuatorLED::run(){
     }
 }
 
+//classe IntelligenteDigitalActuatorLED
+IntelligenteDigitalActuatorLED::IntelligenteDigitalActuatorLED(int t) :Device(), state(LOW), temps(t) {
+}
+
+void IntelligenteDigitalActuatorLED::run() {
+	while (1) {
+		if (ptrmem != NULL)
+			state = *ptrmem;
+		if (state == LOW)
+			cout << "((((eteint))))\n";
+		luminosite_environment -= 50;
+		else
+			cout << "((((allume))))\n";
+		luminosite_environment += 50;
+		sleep(temps);
+	}
+}
+
 // classe I2CActuatorScreen
 I2CActuatorScreen::I2CActuatorScreen ():Device(){
   }
