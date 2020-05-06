@@ -7,6 +7,7 @@ void Board::setup(){
   Serial.begin(9600);
 // on fixe les pin en entree et en sorite en fonction des capteurs/actionneurs mis sur la carte
   pinMode(1,INPUT);
+  pinMode(2, INPUT);
   pinMode(0,OUTPUT);
 }
 
@@ -29,6 +30,20 @@ void Board::loop(){
     }
     cpt++;
     sleep(1);
+  }
+
+  for (i = 0; i < 10; i++) {
+	  // lecture sur la pin 2 : capteur de luminosite
+	  val = analogRead(2);
+	  sprintf(buf, "luminosite %d", val);
+	  Serial.println(buf);
+	  if (cpt % 5 == 0) {
+		  // tous les 5 fois on affiche sur l ecran la luminosite
+		  sprintf(buf, "%d", val);
+		  bus.write(1, buf, 100);
+	  }
+	  cpt++;
+	  sleep(1);
   }
 // on eteint et on allume la LED
   if(bascule)
