@@ -90,4 +90,16 @@ public:
   virtual void run();
 };
 
+
+//classe ExternalDigitalSensorButton
+class ExternalDigitalSensorButton : public Device {
+private:
+	int stateButton;
+public:
+	// constructeur
+	ExternalDigitalSensorButton();
+	// thread representant le bouton et permettant de fonctionner independamment de la board
+	virtual void run();
+};
+
 #endif

@@ -87,6 +87,36 @@ void I2CActuatorScreen::run(){
 }
 
 
+//classe ExternalDigitalSensorButton
+ExternalDigitalSensorButton::ExternalDigitalSensorButton() : Device() {
+	stateButton = OFF;
+}
 
+
+void ExternalDigitalSensorButton::run() {
+	while (1) {
+		if (ptrmem != NULL)
+			stateButton = *ptrmem;
+		if (stateButton == ON)
+			cout << "ON\n";
+		else
+			cout << "OFF\n";
+		sleep(1);
+	}
+}
+
+/*
+void ExternalDigitalSensorButton::run() {
+	while (1) {
+		if (ifstream("on.txt"))
+			stateButton = ON;
+			cout << "ON\n";
+		else
+			stateButton = OFF;
+			cout << "OFF\n";
+		sleep(1);
+	}
+}
+*/
 
 

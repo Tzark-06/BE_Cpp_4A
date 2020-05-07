@@ -10,6 +10,7 @@ void Board::setup(){
   pinMode(2, INPUT);
   pinMode(0,OUTPUT);
   pinMode(3, OUTPUT);
+  pinMode(4, INPUT);
 }
 
 // la boucle de controle arduino
@@ -50,9 +51,11 @@ void Board::loop(){
   if(bascule)
     digitalWrite(0,HIGH);
   digitalWrite(3, HIGH);
+  digitalWrite(4, ON);
   else
     digitalWrite(0,LOW);
   digitalWrite(3, LOW);
+  digitalWrite(4, OFF);
   bascule=1-bascule;
   
 }
